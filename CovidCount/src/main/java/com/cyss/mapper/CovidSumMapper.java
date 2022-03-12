@@ -24,8 +24,6 @@ public class CovidSumMapper extends Mapper<LongWritable, Text, Text, CovidCountB
         String[] fields = value.toString().split(",");
 
         outKey.set(fields[2]);
-//        outValue.setCases(Long.parseLong(fields[4]));
-//        outValue.setDeaths(Long.parseLong(fields[5]));
         outValue.set(Long.parseLong(fields[fields.length - 2]), Long.parseLong(fields[fields.length - 1]));
 
         context.write(outKey, outValue);
